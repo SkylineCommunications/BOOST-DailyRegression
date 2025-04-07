@@ -48,6 +48,6 @@ jobs:
     with:
       workflow-name: ${{ inputs.workflow-name }}
       ref: refs/tags/${{ needs.regression-release.outputs.version-tag }}
-      prefix: "RELEASE"
+      title: "RELEASE"
     secrets:
       msteams-webhook: ${{ secrets.msteams-webhook }}
