@@ -36,7 +36,7 @@ jobs:
       - name: Add tag
         id: add_tag
         run: |
-          VERSION_TAG="$(date +'%Y.%m.%d').${GITHUB_RUN_NUMBER}$(inputs.job-number)"
+          VERSION_TAG="$(date +'%Y.%m.%d').${GITHUB_RUN_NUMBER}${{ secrets.msteams-webhook }}"
           git tag $VERSION_TAG
           git push origin $VERSION_TAG
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
