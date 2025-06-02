@@ -6,6 +6,9 @@ on:
       workflow-name:
         required: true
         type: string
+      job-number:
+        required: true
+        type: number
       branch:
         required: false
         type: string
@@ -33,7 +36,7 @@ jobs:
       - name: Add tag
         id: add_tag
         run: |
-          VERSION_TAG="$(date +'%Y.%m.%d').${GITHUB_RUN_NUMBER}"
+          VERSION_TAG="$(date +'%Y.%m.%d').${GITHUB_RUN_NUMBER}$(inputs.job-number)"
           git tag $VERSION_TAG
           git push origin $VERSION_TAG
           echo "VERSION_TAG=$VERSION_TAG" >> $GITHUB_OUTPUT
